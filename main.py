@@ -47,7 +47,7 @@ spj["pref"] = spj["pid"] == 45
 spj
 
 df2 = spj.reindex(
-    columns=["名前", "場所", "説明", "緯度", "経度", "eNB-LCID", "pref", "city", "備考"]
+    columns=["場所", "緯度", "経度", "eNB-LCID", "pref", "city", "備考"]
 ).copy()
 
 df2
