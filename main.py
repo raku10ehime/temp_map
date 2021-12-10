@@ -19,6 +19,8 @@ df1 = df0[df0["タイムスタンプ"] > dt_3dy].drop("タイムスタンプ", a
 
 df1["場所"] = df1["市町村"].str.cat(df1["町名以降"])
 
+df1["備考"] = df1["備考"].fillna("")
+
 df1["eNB-LCID"] = df1["eNB"].str.cat(df1["LCID"], sep="-")
 
 df1["pid"] = df1["eNB"].astype(int).apply(lambda x: x >> 14)
