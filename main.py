@@ -12,7 +12,7 @@ dt_3dy = dt_now - datetime.timedelta(days=3)
 
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTT5Kyh0YLcmiM0dlGmAHcP1NSWVckgGI5OgIbq9weBnrKSPmTfaj471GfIEU4-3dGNIVqccEeZqZF/pub?gid=391974378&single=true&output=csv"
 
-df0 = pd.read_csv(url, parse_dates=["タイムスタンプ"], dtype={"eNB": str, "LCID": str})
+df0 = pd.read_csv(url, parse_dates=["タイムスタンプ"], dtype={"eNB": str, "LCID": str, "備考": str})
 df0
 
 df1 = df0[df0["タイムスタンプ"] > dt_3dy].drop("タイムスタンプ", axis=1)
