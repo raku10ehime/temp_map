@@ -15,6 +15,11 @@ url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTT5Kyh0YLcmiM0dlGmAHcP1
 df0 = pd.read_csv(url, parse_dates=["タイムスタンプ"], dtype={"eNB": str, "LCID": str, "備考": str})
 df0
 
+# 名前、市町村、町名以降が重複は一番最後のデータを反映
+df0.drop_duplicates(subset=["名前", "市町村", "町名以降"], keep="last", inplace=True)
+
+df0.dropna(subset=["経度", "緯度"], inplace=True)
+
 df1 = df0[(df0["タイムスタンプ"] > dt_3dy) & (df0["消去"].isna())].drop(["タイムスタンプ", "消去"], axis=1)
 
 df1["場所"] = df1["市町村"].str.cat(df1["町名以降"])
