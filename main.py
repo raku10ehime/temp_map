@@ -20,7 +20,7 @@ df0.drop_duplicates(subset=["名前", "市町村", "町名以降"], keep="last",
 
 df0.dropna(subset=["経度", "緯度"], inplace=True)
 
-df1 = df0[(df0["タイムスタンプ"] > dt_3dy) & (df0["消去"].isna())].drop(["タイムスタンプ", "消去"], axis=1)
+df1 = df0[(df0["タイムスタンプ"] > dt_3dy) & (df0["確認"].isna())].drop(["タイムスタンプ", "確認"], axis=1)
 
 df1["場所"] = df1["市町村"].str.cat(df1["町名以降"])
 
