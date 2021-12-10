@@ -15,7 +15,7 @@ url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTT5Kyh0YLcmiM0dlGmAHcP1
 df0 = pd.read_csv(url, parse_dates=["タイムスタンプ"], dtype={"eNB": str, "LCID": str, "備考": str})
 df0
 
-df1 = df0[df0["タイムスタンプ"] > dt_3dy].drop("タイムスタンプ", axis=1)
+df1 = df0[(df0["タイムスタンプ"] > dt_3dy) & (df0["消去"].isna())].drop(["タイムスタンプ", "消去"], axis=1)
 
 df1["場所"] = df1["市町村"].str.cat(df1["町名以降"])
 
