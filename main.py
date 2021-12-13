@@ -18,6 +18,11 @@ df0
 # 名前、市町村、町名以降が重複は一番最後のデータを反映
 df0.drop_duplicates(subset=["名前", "市町村", "町名以降"], keep="last", inplace=True)
 
+df0[["緯度", "経度"]] = df0["緯度・経度"].str.split(",", expand=True)
+
+df0["緯度"] = df0["緯度"].str.split().astype(float)
+df0["経度"] = df0["経度"].str.split().astype(float)
+
 df0.dropna(subset=["経度", "緯度"], inplace=True)
 
 df1 = df0[(df0["タイムスタンプ"] > dt_3dy) & (df0["確認"].isna())].drop(["タイムスタンプ", "確認"], axis=1)
@@ -52,10 +57,6 @@ fol = kml.newfolder()
 if len(df1) > 0:
 
     df1["場所"] = df1["市町村"].str.cat(df1["町名以降"])
-    df1[["緯度", "経度"]] = df1["緯度・経度"].str.split(",", expand=True)
-
-    df1["緯度"] = df1["緯度"].str.split().astype(float)
-    df1["経度"] = df1["経度"].str.split().astype(float)
 
     df1["備考"] = df1["備考"].fillna("")
 
