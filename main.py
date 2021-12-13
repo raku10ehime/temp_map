@@ -52,6 +52,10 @@ fol = kml.newfolder()
 if len(df1) > 0:
 
     df1["場所"] = df1["市町村"].str.cat(df1["町名以降"])
+    df1[["緯度", "経度"]] = df1["緯度・経度"].str.split(",", expand=True)
+
+    df1["緯度"] = df1["緯度"].str.split().astype(float)
+    df1["経度"] = df1["経度"].str.split().astype(float)
 
     df1["備考"] = df1["備考"].fillna("")
 
