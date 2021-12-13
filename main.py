@@ -20,8 +20,8 @@ df0.drop_duplicates(subset=["名前", "市町村", "町名以降"], keep="last",
 
 df0[["緯度", "経度"]] = df0["緯度・経度"].str.split(",", expand=True)
 
-df0["緯度"] = df0["緯度"].str.split().astype(float)
-df0["経度"] = df0["経度"].str.split().astype(float)
+df0["緯度"] = df0["緯度"].str.strip().astype(float)
+df0["経度"] = df0["経度"].str.strip().astype(float)
 
 df0.dropna(subset=["経度", "緯度"], inplace=True)
 
