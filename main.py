@@ -49,7 +49,7 @@ fol = kml.newfolder()
 
 if len(df1) > 0:
     
-    df1[["緯度", "経度"]] = df1["緯度・経度"].str.split(",", expand=True)
+    df1[["緯度", "経度"]] = df1["緯度・経度"].str.strip("()").str.split(",", expand=True)
 
     df1["緯度"] = df1["緯度"].str.strip().astype(float)
     df1["経度"] = df1["経度"].str.strip().astype(float)
