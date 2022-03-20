@@ -1,5 +1,2 @@
-geopandas
 pandas
-pygeos
-rtree
 simplekml
