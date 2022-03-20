@@ -9,7 +9,7 @@ JST = datetime.timezone(datetime.timedelta(hours=+9))
 dt_now = datetime.datetime.now(JST).replace(tzinfo=None)
 dt_3dy = dt_now - datetime.timedelta(days=3)
 
-# スプレッドシートのウェブアプリのURL
+# スプレッドシートのCSVのURL
 url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSroTLHVCV2xgBucqPyevEtUblVM2cIpJv6SeZTHcbu_GSFQSNUb6KQyc6CDsFWjk5gieDmx126lWRm/pub?gid=0&single=true&output=csv"
 
 df0 = pd.read_csv(url, parse_dates=["日付"])
