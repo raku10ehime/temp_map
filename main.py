@@ -53,7 +53,7 @@ if len(df1) > 0:
     csv_path = pathlib.Path("map", "temp.csv")
     csv_path.parent.mkdir(parents=True, exist_ok=True)
 
-    df1.to_csv(csv_path, encoding="utf_8_sig")
+    df1.to_csv(csv_path, encoding="utf_8_sig", index=False)
 
     for i, r in df1.iterrows():
 
